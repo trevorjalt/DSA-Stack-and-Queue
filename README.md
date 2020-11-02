@@ -20,25 +20,16 @@ class Stack {
     }
 
     push(data) {
-        // if stack empty, place on top of stack
         if (this.top === null) {
             this.top = new _Node(data, null)
             return this.top
         }
 
-        // if stack already has something
-        // create a new node
-        // add data to the new node
-        // have pointer point to the top
         const node = new _Node(data, this.top)
         this.top = node
     }
 
     pop() {
-        // remove from the top
-        // pointer points to next item
-        // next item becomes top of the stack
-
         const node = this.top
         this.top = node.next
         return node.data
@@ -158,30 +149,23 @@ function langParser(str) {
     }
 
     for (let i = 0; i < str.length; i++) {
-        // if character is an opening, add to stack
         if (str[i] === '(' || str[i] === '[' || str[i] === '{') {
             stack.push(str[i])
-        }
-        
-        // if character is a closing brace, pop it from the stack
-        else {
+        } else {
             let lastChar = ''
 
-            // if stack is empty, exit, else pop off the last char
             if (stack.top === null) {
                 return false
             } else {
                 lastChar = stack.pop()
             }
 
-            // if lastChar doesn't match the corresponding element in the langMap, return false
             if (str[i] !== langMap[lastChar]) {
                 return false
             }
         }
     }
 
-    // if stack isn't empty after completion of for loop, return false
     if (stack.top !== null) {
         return false
     }
@@ -242,12 +226,10 @@ class Queue {
             this.last.next = node
         }
 
-        // make the new node the last item on the queue
         this.last = node
     }
 
     dequeue() {
-        // if queue is empty, there is nothing to return
         if (this.first === null) {
             return
         }
@@ -255,7 +237,6 @@ class Queue {
         const node = this.first
         this.first = this.first.next
 
-        // if this is the last item in the queue
         if (node === this.last) {
             this.last = null
         }
@@ -341,12 +322,10 @@ class Queue {
             node.prev = this.last
         }
 
-        // make the new node the last item on the queue
         this.last = node
     }
 
     dequeue() {
-        // if queue is empty, there is nothing to return
         if (this.first === null) {
             return
         }
@@ -354,7 +333,6 @@ class Queue {
         const node = this.first
         this.first = this.first.next
 
-        // if this is the last item in the queue
         if (node === this.last) {
             this.last = null
         }
@@ -431,27 +409,18 @@ class Stack {
     }
 
     push(data) {
-        // if stack empty, place on top of stack
         if (this.top === null) {
             this.top = new _Node(data, null)
             this.length += 1
             return this.top
         }
 
-        // if stack already has something
-        // create a new node
-        // add data to the new node
-        // have pointer point to the top
         const node = new _Node(data, this.top)
         this.length += 1
         this.top = node
     }
 
     pop() {
-        // remove from the top
-        // pointer points to next item
-        // next item becomes top of the stack
-
         const node = this.top
         this.top = node.next
         this.length -= 1
@@ -496,11 +465,6 @@ function main() {
     starTrek.enqueue('Uhura')
     starTrek.enqueue('Sulu')
     starTrek.enqueue('Checkov')
-    // starTrek.dequeue()
-    // starTrek.dequeue()
-    // starTrek.dequeue()
-    // starTrek.dequeue()
-    // starTrek.dequeue()
 }
 
 main()
