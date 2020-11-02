@@ -109,7 +109,6 @@ function squareDancePairing(dancerQueue) {
             let femaleDancer = femaleQueue.dequeue().substring(2)
 
             console.log(`Female dancer is ${femaleDancer}, and the male dancer is ${maleDancer}`)
-
         }
     }
 
@@ -134,3 +133,21 @@ const dancers = [
 squareDancePairing(dancers)
 
 
+
+function ophidianBank(queue) {
+    while (queue.first) {
+        let currCustomer = queue.dequeue();
+        let missingDocs = Math.random();
+
+        if (missingDocs < .25) {
+            queue.enqueue(currCustomer);
+            console.log(`${currCustomer} doesn't have all of the appropriate paperwork and is sent to the end of the queue.`)
+        }
+        else {
+            console.log(`${currCustomer} serviced.`);
+        }
+    }
+    console.log('Queue is empty!');
+}
+
+ophidianBank(starTrek)
